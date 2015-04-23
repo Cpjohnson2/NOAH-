@@ -25,13 +25,6 @@ def Heropicker(list1,list2): #this is the definition, Heropicker, that is using 
 	return herolist # after all the choices are made, this will return the herolist 
 		
 
-
-herolist = Heropicker(heroesSW,heroesTN) 	
-print chosenlist #I am assigning the value of Heropicker to the variable chosenlist, this will display all the user's choices on one line 
-
-
-    
-	
 def Villainpicker(list1,list2): #this is the definition: Villainpicker, that is using heroesSW array and heroesTN array
 	villainlist = []
 	for iter in range(len(list1)):
@@ -40,11 +33,22 @@ def Villainpicker(list1,list2): #this is the definition: Villainpicker, that is 
 		villainlist.append(uchoice)
 	return  villainlist
 	
+debug = raw_input("1")
+herolist = Heropicker(heroesSW,heroesTN) 	
+debug = raw_input("2")
+print chosenlist #I am assigning the value of Heropicker to the variable chosenlist, this will display all the user's choices on one line 
+	
+debug = raw_input("3")
 villainlist = Villainpicker(villainsSW, villainsTN)
 print chosenlist 
 
+debug = raw_input("4")
 path = os.path.dirname(os.path.abspath(__file__))
+debug = raw_input("5")
 index = open(os.path.join(path, 'TURTLE1.txt'), 'r').read()
+debug = raw_input("6")
 entryStyle = open(os.path.join(path, 'TURTLE1.txt'), 'r').read()
+debug = raw_input("7")
 index = index.format(herolist[0], herolist[1], herolist[2], herolist[3], herolist[4], herolist[5], herolist[6], villainlist[0], villainlist[1], villainlist[2])
 print index
+debug = raw_input("8")
