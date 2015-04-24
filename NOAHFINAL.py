@@ -44,12 +44,13 @@ def storyselector(path):
 		print str(i + 1) + ") " + star[i]
 	userchoice = int(raw_input("which story would you like?")) - 1 
 	chosenpath = os.path.join(path, star[userchoice])
+	chosenstory= os.path.userchoice.txt() #SOMETHING MUST GO HERE 
 	
-def stories(storyTMNT, storySW):
-	f = open()
+def stories(chosenpath):
+	f = open(os.path.join(storiespath, star[i]), 'r').read()
 	lines = f.readLines()
-	print lines 
-	f.close()
+	return lines 
+	f.close(os.path.join(storiespath, star[i]))
 print stories 
 
 
@@ -59,6 +60,7 @@ print main
 herolist = Heropicker(heroesTN, heroesSW)
 	
 
+  
 	
 
 villainlist = Villainpicker(villainsSW, villainsTN)
@@ -73,7 +75,8 @@ storiespath = (os.path.join(path, 'STORIES'))
 storyselector(storiespath)
 
 
-entryStyle = open(os.path.join(storiespath, 'SW1.txt'), 'r').read()
+entryStyle = open(os.path.join(storiespath, chosenstory), 'r').read()
+
 
 
 
