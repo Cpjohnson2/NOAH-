@@ -1,15 +1,17 @@
-
+from sys import argv
 import os
+import choice 
 
 
 
 
 
-heroesSW = ['Luke Skywalker', 'Yoda', 'Han Solo', 'R2D2', 'C3PO', 'Chewbacca', 'Leia'] # I am setting the value for heroes
-villainsSW=['Darth Vader','The Emperor', 'Jabba the Hut', ] # I am setting the value for Villains
+heroesSW = ['Luke Skywalker', 'Yoda', 'Han Solo', 'R2D2', 'C3PO', 'Chewbacca', 'Leia'] # I am setting the data structure for heroes
+villainsSW=['Darth Vader','The Emperor', 'Jabba the Hut', ] # I am setting the data structure for Villains
 heroesTN = ['Leonardo', 'Michelangelo', 'Donatello', 'Rapheal', 'Casey Jones', 'April', 'Master Splinter']
 villainsTN = ['Shredder', 'Rock Steady', 'Bee Bop',]
-global chosenlist
+storyTMNT = ['TURTLE1.txt', 'TURTLE2.txt']
+storySW = 	['SW1.txt', 'SW2.txt']
 
 def Heropicker(list1,list2): #this is the definition, Heropicker, that is using heroesSW array and heroesTN array
 	herolist = [] #this herolist is empty so that the user can input his/her choices, and it'll show up in the herolist
@@ -32,23 +34,50 @@ def Villainpicker(list1,list2): #this is the definition: Villainpicker, that is 
 		uchoice = raw_input("Make your villain selection here:")
 		villainlist.append(uchoice)
 	return  villainlist
-	
-debug = raw_input("1")
-herolist = Heropicker(heroesSW,heroesTN) 	
-debug = raw_input("2")
-print chosenlist #I am assigning the value of Heropicker to the variable chosenlist, this will display all the user's choices on one line 
-	
-debug = raw_input("3")
-villainlist = Villainpicker(villainsSW, villainsTN)
-print chosenlist 
 
-debug = raw_input("4")
+	
+		
+		
+def storyselector(path):
+	star= os.listdir(path)
+	for i in range(len(star)):
+		print str(i + 1) + ") " + star[i]
+	userchoice = int(raw_input("which story would you like?")) - 1 
+	chosenpath = os.path.join(path, star[userchoice])
+	
+def stories(storyTMNT, storySW):
+	f = open()
+	lines = f.readLines()
+	print lines 
+	f.close()
+print stories 
+
+
+def main():
+	stories(sys.argv[1])
+print main 
+herolist = Heropicker(heroesTN, heroesSW)
+	
+
+	
+
+villainlist = Villainpicker(villainsSW, villainsTN)
+
+
+
+
+
 path = os.path.dirname(os.path.abspath(__file__))
-debug = raw_input("5")
-index = open(os.path.join(path, 'TURTLE1.txt'), 'r').read()
-debug = raw_input("6")
-entryStyle = open(os.path.join(path, 'TURTLE1.txt'), 'r').read()
-debug = raw_input("7")
-index = index.format(herolist[0], herolist[1], herolist[2], herolist[3], herolist[4], herolist[5], herolist[6], villainlist[0], villainlist[1], villainlist[2])
+storiespath = (os.path.join(path, 'STORIES')) 
+ 
+storyselector(storiespath)
+
+
+entryStyle = open(os.path.join(storiespath, 'SW1.txt'), 'r').read()
+
+
+
+index = entryStyle.format(herolist[0], herolist[1], herolist[2], herolist[3], herolist[4], herolist[5], herolist[6], villainlist[0], villainlist[1], villainlist[2])
 print index
-debug = raw_input("8")
+
+
