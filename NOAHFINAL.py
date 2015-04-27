@@ -35,8 +35,6 @@ def Villainpicker(list1,list2): #this is the definition: Villainpicker, that is 
 		villainlist.append(uchoice)
 	return  villainlist
 
-	
-		
 		
 def storyselector(path):
 	star= os.listdir(path)
@@ -44,7 +42,9 @@ def storyselector(path):
 		print str(i + 1) + ") " + star[i]
 	userchoice = int(raw_input("which story would you like?")) - 1 
 	chosenpath = os.path.join(path, star[userchoice])
-	chosenstory= os.path.userchoice.txt() #SOMETHING MUST GO HERE 
+	return chosenpath 
+	
+	
 	
 def stories(chosenpath):
 	f = open(os.path.join(storiespath, star[i]), 'r').read()
@@ -54,33 +54,42 @@ def stories(chosenpath):
 print stories 
 
 
-def main():
-	stories(sys.argv[1])
-print main 
-herolist = Heropicker(heroesTN, heroesSW)
+# this is to parse the stories into a 100 word format, story represents the entry style of heroes and villains and the text files 
+def comicstrip(story, maxwords):  
+	#I want to parse 100 words or so of the txt file that has been chosen 
+	allofthewords = story.split(" ")  # this represents every time a space is after a word in the text 
+	counter = 0 # this is the counter that is set at zero, so it starts from the beginning of the story. 
+	words = [" "]  #this develops a list 
+	for  word in allofthewords:    #for the space in the length of the stories is 100,
+		counter += 1
+		words.append(word)
+		if counter == maxwords:
+			counter = 0
+			print "\n" * 200
+			# I want to add 100 words
+			print  " ".join(words) 
+			
+			words = ["word"]
+			raw_input("Press enter to continue") 
+			
+	
 	
 
-  
-	
+def main():
+	stories(sys.argv[1])
+
+herolist = Heropicker(heroesTN, heroesSW)
 
 villainlist = Villainpicker(villainsSW, villainsTN)
 
-
-
-
-
 path = os.path.dirname(os.path.abspath(__file__))
+
 storiespath = (os.path.join(path, 'STORIES')) 
  
-storyselector(storiespath)
-
+chosenstory = storyselector(storiespath)
 
 entryStyle = open(os.path.join(storiespath, chosenstory), 'r').read()
 
 
-
-
-index = entryStyle.format(herolist[0], herolist[1], herolist[2], herolist[3], herolist[4], herolist[5], herolist[6], villainlist[0], villainlist[1], villainlist[2])
-print index
-
-
+story = entryStyle.format(herolist[0], herolist[1], herolist[2], herolist[3], herolist[4], herolist[5], herolist[6], villainlist[0], villainlist[1], villainlist[2])
+comicstrip(story, 200)
